@@ -1,1 +1,468 @@
-# siria
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultura Síria: Tradição e História</title>
+    <style>
+        /* =========================
+            CORES DA CULTURA SÍRIA (TEMAS)
+        ========================== */
+        :root {
+            /* Estado inicial */
+            --tema: claro;
+
+            /* Tema claro (Inspirado em tons de areia, branco e verde/vermelho tradicionais) */
+            --fundo-claro: #f4f6f0;
+            --superficie-clara: #ffffff;
+            --texto-claro: #1c2821;
+            --texto-secundario-claro: #4a5d51;
+            --primaria-clara: #007A3D; /* Verde Sírio */
+            --primaria-forte-clara: #005a2d;
+            --borda-clara: #d0ded3;
+
+            /* Tema escuro (Noite no deserto com detalhes em verde e dourado) */
+            --fundo-escuro: #0f1411;
+            --superficie-escura: #18221b;
+            --texto-escuro: #e4efe7;
+            --texto-secundario-escuro: #a3b8aa;
+            --primaria-escura: #00b058; /* Verde brilhante para contraste */
+            --primaria-forte-escura: #0a1711;
+            --borda-escura: #27382d;
+        }
+
+        /* =========================
+            CHECKBOX MARCADO
+        ========================== */
+        :root:has(#tema:checked) {
+            --tema: escuro;
+        }
+
+        /* =========================
+            CONFIGURAÇÕES GERAIS
+        ========================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+
+            /* FALLBACK */
+            background-color: var(--fundo-claro);
+            color: var(--texto-claro);
+
+            /* CSS if() */
+            background-color: if(
+                style(--tema: escuro):
+                    var(--fundo-escuro);
+                else:
+                    var(--fundo-claro);
+            );
+            color: if(
+                style(--tema: escuro):
+                    var(--texto-escuro);
+                else:
+                    var(--texto-claro);
+            );
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* =========================
+            CHECKBOX OCULTO
+        ========================== */
+        #tema {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        /* =========================
+            HEADER
+        ========================== */
+        header {
+            background-color: var(--superficie-clara);
+            border-bottom: 1px solid var(--borda-clara);
+
+            background-color: if(
+                style(--tema: escuro):
+                    var(--superficie-escura);
+                else:
+                    var(--superficie-clara);
+            );
+            border-color: if(
+                style(--tema: escuro):
+                    var(--borda-escura);
+                else:
+                    var(--borda-clara);
+            );
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--primaria-clara);
+            color: if(
+                style(--tema: escuro):
+                    var(--primaria-escura);
+                else:
+                    var(--primaria-clara);
+            );
+            margin: 0;
+        }
+
+        header p {
+            color: var(--texto-secundario-claro);
+            color: if(
+                style(--tema: escuro):
+                    var(--texto-secundario-escuro);
+                else:
+                    var(--texto-secundario-claro);
+            );
+            margin-bottom: 0;
+        }
+
+        /* =========================
+            NAV
+        ========================== */
+        nav {
+            background-color: var(--primaria-forte-clara);
+            background-color: if(
+                style(--tema: escuro):
+                    var(--primaria-forte-escura);
+                else:
+                    var(--primaria-forte-clara);
+            );
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+            BOTÃO / LABEL
+        ========================== */
+        .botao-tema {
+            padding: 8px 16px;
+            border: 2px solid white;
+            border-radius: 20px;
+            background-color: transparent;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .botao-tema:hover {
+            background-color: white;
+            color: var(--primaria-forte-clara);
+        }
+
+        .texto-claro {
+            display: none;
+        }
+
+        .texto-escuro {
+            display: inline;
+        }
+
+        :root:has(#tema:checked) .texto-claro {
+            display: inline;
+        }
+
+        :root:has(#tema:checked) .texto-escuro {
+            display: none;
+        }
+
+        /* =========================
+            MAIN
+        ========================== */
+        main {
+            width: min(1100px, 90%);
+            margin: 40px auto;
+        }
+
+        /* =========================
+            INTRODUÇÃO
+        ========================== */
+        .introducao {
+            background-color: var(--superficie-clara);
+            border: 1px solid var(--borda-clara);
+
+            background-color: if(
+                style(--tema: escuro):
+                    var(--superficie-escura);
+                else:
+                    var(--superficie-clara);
+            );
+            border-color: if(
+                style(--tema: escuro):
+                    var(--borda-escura);
+                else:
+                    var(--borda-clara);
+            );
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .introducao h2 {
+            color: var(--primaria-clara);
+            color: if(
+                style(--tema: escuro):
+                    var(--primaria-escura);
+                else:
+                    var(--primaria-clara);
+            );
+            margin-top: 0;
+        }
+
+        /* =========================
+            SEÇÃO DOS CARDS
+        ========================== */
+        .secao-cards h2 {
+            color: var(--primaria-clara);
+            color: if(
+                style(--tema: escuro):
+                    var(--primaria-escura);
+                else:
+                    var(--primaria-clara);
+            );
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* =========================
+            CARD
+        ========================== */
+        .card {
+            background-color: var(--superficie-clara);
+            border: 1px solid var(--borda-clara);
+
+            background-color: if(
+                style(--tema: escuro):
+                    var(--superficie-escura);
+                else:
+                    var(--superficie-clara);
+            );
+            border-color: if(
+                style(--tema: escuro):
+                    var(--borda-escura);
+                else:
+                    var(--borda-clara);
+            );
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-conteudo {
+            padding: 20px;
+        }
+
+        .card h3 {
+            color: var(--primaria-clara);
+            color: if(
+                style(--tema: escuro):
+                    var(--primaria-escura);
+                else:
+                    var(--primaria-clara);
+            );
+            margin-top: 0;
+        }
+
+        .card p, .card ul {
+            color: var(--texto-secundario-claro);
+            color: if(
+                style(--tema: escuro):
+                    var(--texto-secundario-escuro);
+                else:
+                    var(--texto-secundario-claro);
+            );
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
+        /* =========================
+            SOBRE
+        ========================== */
+        .sobre {
+            background-color: var(--superficie-clara);
+            border: 1px solid var(--borda-clara);
+
+            background-color: if(
+                style(--tema: escuro):
+                    var(--superficie-escura);
+                else:
+                    var(--superficie-clara);
+            );
+            border-color: if(
+                style(--tema: escuro):
+                    var(--borda-escura);
+                else:
+                    var(--borda-clara);
+            );
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .sobre h2 {
+            color: var(--primaria-clara);
+            color: if(
+                style(--tema: escuro):
+                    var(--primaria-escura);
+                else:
+                    var(--primaria-clara);
+            );
+            margin-top: 0;
+        }
+
+        /* =========================
+            FOOTER
+        ========================== */
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            text-align: center;
+            background-color: var(--primaria-forte-clara);
+            background-color: if(
+                style(--tema: escuro):
+                    var(--primaria-forte-escura);
+                else:
+                    var(--primaria-forte-clara);
+            );
+            color: white;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="tema">
+
+    <!-- HEADER -->
+    <header id="inicio">
+        <h1>Cultura Síria</h1>
+        <p>A Síria é o lugar onde a história humana aprendeu a escrever suas primeiras palavras, e onde o mundo contemporâneo escolheu o silêncio diante de suas feridas mais profundas.</p>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#destaques">Destaques</a>
+        <a href="#sobre">Sobre</a>
+        <label for="tema" class="botao-tema">
+            <span class="texto-escuro">🌙 Tema escuro</span>
+            <span class="texto-claro">☀️ Tema claro</span>
+        </label>
+    </nav>
+
+    <!-- MAIN -->
+    <main>
+        <!-- INTRODUÇÃO -->
+        <section class="introducao">
+            <h2>A Riqueza da Síria</h2>
+            <p>
+                A Síria possui uma herança cultural milenar localizada no coração do Oriente Médio. Sua capital, Damasco, é considerada uma das cidades continuamente habitadas mais antigas do planeta.
+            </p>
+            <p>
+                Com uma mescla de influências árabes, otomanas e mediterrâneas, a cultura síria destaca-se pelo seu patrimônio histórico, arte detalhada, música tradicional e hospitalidade marcante.
+            </p>
+        </section>
+
+        <!-- CARDS -->
+        <section id="destaques" class="secao-cards">
+            <h2>Pilares da Cultura Síria</h2>
+            <div class="cards">
+                <!-- CARD 1 -->
+                <article class="card">
+                    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Syrian_meal.jpg/960px-Syrian_meal.jpg" alt="Culinária Árabe e Síria">
+                    <div class="card-conteudo">
+                        <h3>Gastronomia Típica</h3>
+                        <p>
+                            A culinária síria é rica em sabores e influenciada por milênios de história no Oriente Médio. Os ingredientes mais comuns incluem pão pita, azeite de oliva, hortelã, limão, pistache e grãos variados que dão origem a pratos mundialmente conhecidos.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- CARD 2 -->
+                <article class="card">
+                    <img src="https://s2.glbimg.com/7QFP7m28IMDhGzXdj5dinzpVIEg=/smart/e.glbimg.com/og/ed/f/original/2015/09/10/arquitetura-siria-16.jpg" alt="Arquitetura de Mesquita e Mercado Típico">
+                    <div class="card-conteudo">
+                        <h3>Arquitetura Histórica</h3>
+                        <p>
+                            A arquitetura histórica da Síria é uma das mais ricas do mundo, marcada por mosaicos detalhados, pátios internos com fontes, arcos ornamentados e influências dos impérios romano, bizantino e islâmico em cidades como Damasco e Aleppo.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- CARD 3 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=900&q=80" alt="Instrumento Musical Oud">
+                    <div class="card-conteudo">
+                        <h3>Música e Instrumentos</h3>
+                        <p>A música tradicional utiliza instrumentos clássicos que criam melodias envolventes e ritmos expressivos:</p>
+                        <ul>
+                            <li><strong>Oud:</strong> Alaúde árabe em formato de pera, ancestral do alaúde europeu.</li>
+                            <li><strong>Qanun:</strong> Cítara trapezoidal com dezenas de cordas.</li>
+                            <li><strong>Ney:</strong> Flauta de palheta tradicional feita de cana.</li>
+                            <li><strong>Darbuka e Daf:</strong> Instrumentos de percussão essenciais.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
