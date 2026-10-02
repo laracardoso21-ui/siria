@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultura Síria</title>
+    <title>Cultura Síria: Tradição e História</title>
     <style>
         /* =========================
-           CORES DOS DOIS TEMAS
-           (Inspiradas nas cores da Síria: Vermelho, Verde, Dourado e Areia)
+            CORES DA CULTURA SÍRIA (TEMAS)
         ========================== */
         :root {
             /* Estado inicial */
             --tema: claro;
 
-            /* Tema claro */
-            --fundo-claro: #faf7f2;
+            /* Tema claro (Inspirado em tons de areia, branco e verde/vermelho tradicionais) */
+            --fundo-claro: #f4f6f0;
             --superficie-clara: #ffffff;
-            --texto-claro: #231f20;
-            --texto-secundario-claro: #5c554e;
-            --primaria-clara: #b82329;          /* Vermelho Sírio */
-            --primaria-forte-clara: #007a3d;    /* Verde Sírio */
-            --borda-clara: #e6ded5;
+            --texto-claro: #1c2821;
+            --texto-secundario-claro: #4a5d51;
+            --primaria-clara: #007A3D; /* Verde Sírio */
+            --primaria-forte-clara: #005a2d;
+            --borda-clara: #d0ded3;
 
-            /* Tema escuro */
-            --fundo-escuro: #121413;
-            --superficie-escura: #1c211e;
-            --texto-escuro: #f5f2ed;
-            --texto-secundario-escuro: #b5ada5;
-            --primaria-escura: #e64a50;
-            --primaria-forte-escura: #004d26;
-            --borda-escura: #2f3833;
+            /* Tema escuro (Noite no deserto com detalhes em verde e dourado) */
+            --fundo-escuro: #0f1411;
+            --superficie-escura: #18221b;
+            --texto-escuro: #e4efe7;
+            --texto-secundario-escuro: #a3b8aa;
+            --primaria-escura: #00b058; /* Verde brilhante para contraste */
+            --primaria-forte-escura: #0a1711;
+            --borda-escura: #27382d;
         }
 
         /* =========================
-           CHECKBOX MARCADO
-           Se o HTML possui o
-           checkbox #tema marcado,
-           alteramos a variável.
+            CHECKBOX MARCADO
         ========================== */
         :root:has(#tema:checked) {
             --tema: escuro;
         }
 
         /* =========================
-           CONFIGURAÇÕES GERAIS
+            CONFIGURAÇÕES GERAIS
         ========================== */
         * {
             box-sizing: border-box;
@@ -58,17 +54,11 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
 
-            /* 
-             * FALLBACK
-             * Navegadores que não entendem
-             * if() permanecem no tema claro.
-             */
+            /* FALLBACK */
             background-color: var(--fundo-claro);
             color: var(--texto-claro);
 
-            /* 
-             * NOVO CSS if()
-             */
+            /* CSS if() */
             background-color: if(
                 style(--tema: escuro):
                     var(--fundo-escuro);
@@ -89,12 +79,8 @@
         }
 
         /* =========================
-           CHECKBOX
+            CHECKBOX OCULTO
         ========================== */
-        /* 
-         * O checkbox continua existindo,
-         * mas fica visualmente escondido.
-         */
         #tema {
             position: absolute;
             width: 1px;
@@ -103,14 +89,12 @@
         }
 
         /* =========================
-           HEADER
+            HEADER
         ========================== */
         header {
-            /* Fallback */
             background-color: var(--superficie-clara);
             border-bottom: 1px solid var(--borda-clara);
 
-            /* CSS if() */
             background-color: if(
                 style(--tema: escuro):
                     var(--superficie-escura);
@@ -150,7 +134,7 @@
         }
 
         /* =========================
-           NAV
+            NAV
         ========================== */
         nav {
             background-color: var(--primaria-forte-clara);
@@ -179,7 +163,7 @@
         }
 
         /* =========================
-           BOTÃO / LABEL
+            BOTÃO / LABEL
         ========================== */
         .botao-tema {
             padding: 8px 16px;
@@ -194,18 +178,8 @@
         .botao-tema:hover {
             background-color: white;
             color: var(--primaria-forte-clara);
-            color: if(
-                style(--tema: escuro):
-                    var(--primaria-forte-escura);
-                else:
-                    var(--primaria-forte-clara);
-            );
         }
 
-        /* 
-         * Inicialmente mostramos:
-         * "Tema escuro"
-         */
         .texto-claro {
             display: none;
         }
@@ -214,10 +188,6 @@
             display: inline;
         }
 
-        /* 
-         * Quando o checkbox estiver
-         * marcado, trocamos os textos.
-         */
         :root:has(#tema:checked) .texto-claro {
             display: inline;
         }
@@ -227,7 +197,7 @@
         }
 
         /* =========================
-           MAIN
+            MAIN
         ========================== */
         main {
             width: min(1100px, 90%);
@@ -235,14 +205,12 @@
         }
 
         /* =========================
-           INTRODUÇÃO
+            INTRODUÇÃO
         ========================== */
         .introducao {
-            /* Fallback */
             background-color: var(--superficie-clara);
             border: 1px solid var(--borda-clara);
 
-            /* if() */
             background-color: if(
                 style(--tema: escuro):
                     var(--superficie-escura);
@@ -272,25 +240,8 @@
             margin-top: 0;
         }
 
-        /* Estilo da lista para deixar o texto mais organizado */
-        .lista-topicos {
-            margin: 15px 0 0 0;
-            padding-left: 20px;
-            color: var(--texto-secundario-claro);
-            color: if(
-                style(--tema: escuro):
-                    var(--texto-secundario-escuro);
-                else:
-                    var(--texto-secundario-claro);
-            );
-        }
-
-        .lista-topicos li {
-            margin-bottom: 8px;
-        }
-
         /* =========================
-           SEÇÃO DOS CARDS
+            SEÇÃO DOS CARDS
         ========================== */
         .secao-cards h2 {
             color: var(--primaria-clara);
@@ -306,19 +257,17 @@
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
         /* =========================
-           CARD
+            CARD
         ========================== */
         .card {
-            /* Fallback */
             background-color: var(--superficie-clara);
             border: 1px solid var(--borda-clara);
 
-            /* if() */
             background-color: if(
                 style(--tema: escuro):
                     var(--superficie-escura);
@@ -363,7 +312,7 @@
             margin-top: 0;
         }
 
-        .card p {
+        .card p, .card ul {
             color: var(--texto-secundario-claro);
             color: if(
                 style(--tema: escuro):
@@ -373,15 +322,22 @@
             );
         }
 
+        .card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
         /* =========================
-           SOBRE
+            SOBRE
         ========================== */
         .sobre {
-            /* Fallback */
             background-color: var(--superficie-clara);
             border: 1px solid var(--borda-clara);
 
-            /* if() */
             background-color: if(
                 style(--tema: escuro):
                     var(--superficie-escura);
@@ -411,7 +367,7 @@
         }
 
         /* =========================
-           FOOTER
+            FOOTER
         ========================== */
         footer {
             margin-top: 50px;
@@ -433,129 +389,80 @@
     </style>
 </head>
 <body>
-    <!-- 
-        CHECKBOX
-        Ele é quem guarda o estado:
-        desmarcado = claro
-        marcado   = escuro
-    -->
     <input type="checkbox" id="tema">
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- HEADER -->
     <header id="inicio">
-        <h1>Cultura da Síria</h1>
-        <p>
-            Uma jornada pelo patrimônio, pela gastronomia e pela arte de uma civilização milenar.
-        </p>
+        <h1>Cultura Síria</h1>
+        <p>A Síria é o lugar onde a história humana aprendeu a escrever suas primeiras palavras, e onde o mundo contemporâneo escolheu o silêncio diante de suas feridas mais profundas.</p>
     </header>
 
-    <!-- =========================
-         NAVEGAÇÃO
-    ========================== -->
+    <!-- NAVEGAÇÃO -->
     <nav>
-        <a href="#inicio">
-            Início
-        </a>
-        <a href="#siria">
-            Patrimônio
-        </a>
-        <a href="#sobre">
-            Sobre
-        </a>
-        <!-- 
-            LABEL FUNCIONA COMO BOTÃO
-            Como "for" aponta para o
-            checkbox #tema, clicar aqui
-            marca/desmarca o checkbox.
-        -->
+        <a href="#inicio">Início</a>
+        <a href="#destaques">Destaques</a>
+        <a href="#sobre">Sobre</a>
         <label for="tema" class="botao-tema">
-            <span class="texto-escuro">
-                🌙 Tema escuro
-            </span>
-            <span class="texto-claro">
-                ☀️ Tema claro
-            </span>
+            <span class="texto-escuro">🌙 Tema escuro</span>
+            <span class="texto-claro">☀️ Tema claro</span>
         </label>
     </nav>
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+    <!-- MAIN -->
     <main>
         <!-- INTRODUÇÃO -->
         <section class="introducao">
-            <h2>
-                História e Identidade Síria
-            </h2>
+            <h2>A Riqueza da Síria</h2>
             <p>
-                A Síria é reconhecida mundialmente como um dos berços da civilização humana, situada no coração do Crescente Fértil. Suas tradições unem influências milenares com uma riquíssima diversidade cultural:
+                A Síria possui uma herança cultural milenar localizada no coração do Oriente Médio. Sua capital, Damasco, é considerada uma das cidades continuamente habitadas mais antigas do planeta.
             </p>
-            <ul class="lista-topicos">
-                <li><strong>Cidades Ancestrais:</strong> Damasco e Aleppo estão entre as cidades continuamente habitadas mais antigas do mundo.</li>
-                <li><strong>Hospitalidade Marcante:</strong> Receber convidados com café árabe e chá de jasmim é um pilar social sagrado.</li>
-                <li><strong>Língua Aramaica:</strong> Um dos poucos lugares do mundo onde ainda se fala o idioma histórico nativo.</li>
-            </ul>
+            <p>
+                Com uma mescla de influências árabes, otomanas e mediterrâneas, a cultura síria destaca-se pelo seu patrimônio histórico, arte detalhada, música tradicional e hospitalidade marcante.
+            </p>
         </section>
 
         <!-- CARDS -->
-        <section id="siria" class="secao-cards">
-            <h2>
-                Tradições Culturais
-            </h2>
+        <section id="destaques" class="secao-cards">
+            <h2>Pilares da Cultura Síria</h2>
             <div class="cards">
                 <!-- CARD 1 -->
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=900&q=80" alt="Culinária típica síria">
+                    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Syrian_meal.jpg/960px-Syrian_meal.jpg" alt="Culinária Árabe e Síria">
                     <div class="card-conteudo">
-                        <h3>
-                            Gastronomia Rica
-                        </h3>
+                        <h3>Gastronomia Típica</h3>
                         <p>
-                            Famosa pelos pratos temperados com azeite, trigo e especiarias como o <strong>Kibbeh</strong>, <strong>Hummus</strong>, <strong>Tabule</strong> e o autêntico doce <strong>Baklava</strong>.
+                            A culinária síria é rica em sabores e influenciada por milênios de história no Oriente Médio. Os ingredientes mais comuns incluem pão pita, azeite de oliva, hortelã, limão, pistache e grãos variados que dão origem a pratos mundialmente conhecidos.
                         </p>
                     </div>
                 </article>
 
                 <!-- CARD 2 -->
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80" alt="Arquitetura de pátios internos">
+                    <img src="https://s2.glbimg.com/7QFP7m28IMDhGzXdj5dinzpVIEg=/smart/e.glbimg.com/og/ed/f/original/2015/09/10/arquitetura-siria-16.jpg" alt="Arquitetura de Mesquita e Mercado Típico">
                     <div class="card-conteudo">
-                        <h3>
-                            Arquitetura & Artesanato
-                        </h3>
+                        <h3>Arquitetura Histórica</h3>
                         <p>
-                            Destaque para as casas com pátios internos adornados de jasmins, além da marchetaria em madeira com madrepérola e o tradicional sabão de Aleppo.
+                            A arquitetura histórica da Síria é uma das mais ricas do mundo, marcada por mosaicos detalhados, pátios internos com fontes, arcos ornamentados e influências dos impérios romano, bizantino e islâmico em cidades como Damasco e Aleppo.
                         </p>
                     </div>
                 </article>
 
                 <!-- CARD 3 -->
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=900&q=80" alt="Instrumento musical Oud">
+                    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=900&q=80" alt="Instrumento Musical Oud">
                     <div class="card-conteudo">
-                        <h3>
-                            Música & Dança
-                        </h3>
-                        <p>
-                            Música marcada pelas melodias do <strong>Oud</strong> (alaúde árabe) e pela energia do <strong>Dabke</strong>, a dança folclórica apresentada em celebreções.
-                        </p>
+                        <h3>Música e Instrumentos</h3>
+                        <p>A música tradicional utiliza instrumentos clássicos que criam melodias envolventes e ritmos expressivos:</p>
+                        <ul>
+                            <li><strong>Oud:</strong> Alaúde árabe em formato de pera, ancestral do alaúde europeu.</li>
+                            <li><strong>Qanun:</strong> Cítara trapezoidal com dezenas de cordas.</li>
+                            <li><strong>Ney:</strong> Flauta de palheta tradicional feita de cana.</li>
+                            <li><strong>Darbuka e Daf:</strong> Instrumentos de percussão essenciais.</li>
+                        </ul>
                     </div>
                 </article>
             </div>
         </section>
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-    <footer>
-        <p>
-            &copy; 2026 Cultura Síria - Atividade Prática
-        </p>
-        <p>
-            Desenvolvido para fins educacionais.
-        </p>
     </footer>
 </body>
 </html>
